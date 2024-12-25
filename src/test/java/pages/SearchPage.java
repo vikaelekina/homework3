@@ -3,8 +3,7 @@ package pages;
 import com.codeborne.selenide.*;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SearchPage {
     private final SelenideElement cityName = $(By.tagName("h1"));
@@ -30,19 +29,8 @@ public class SearchPage {
 
     }
 
-//    public SearchPage hideMenu() {
-//        if(hideMenuButton.is(Condition.visible)){
-//            hideMenuButton.click();
-//        }
-//        return this;
-//    }
-
     public SearchPage hideMenu() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        sleep(1000);
         if(hideMenuButton.is(Condition.visible)){
             hideMenuButton.click();
         }

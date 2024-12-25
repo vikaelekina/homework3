@@ -2,18 +2,16 @@ package tests;
 
 
 import com.codeborne.selenide.Selenide;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
+
 
 
 public class BaseTest {
-    @Before
-    public void setUp() {
 
-    }
 
-    @After
-    public void turnDown() {
+
+    @AfterAll
+    public static void turnDown() {
         Selenide.closeWebDriver();
     }
 }

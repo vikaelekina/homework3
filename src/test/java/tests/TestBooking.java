@@ -2,7 +2,8 @@ package tests;
 
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.SearchPage;
 
@@ -15,6 +16,7 @@ public class TestBooking extends BaseTest {
     private final String city = "Анталья";
 
     @Test
+    @DisplayName("Рбаота фильтра выбора 5-звездочных отелей")
     public void testRating() {
         homePage.openHomePage().acceptCookies().hideMenu().chooseCity(city).searchHotels();
         searchPage.checkCityName(city).hideMenu().setStarFilter().hideMenu().checkHotelStar();

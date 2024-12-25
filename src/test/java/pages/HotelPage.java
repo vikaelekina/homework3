@@ -11,10 +11,8 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Selenide.*;
 
 public class HotelPage {
-//    private final SelenideElement name = $x("//div[@data-capla-component-boundary='b-property-web-property-page/PropertyHeaderName']/h2");
 
-   private final SelenideElement name = $x("//div[@class='hp__hotel-title pp-header']//h2");
-//    private final SelenideElement name = $(By.className("d2fee87262 pp-header__title"));
+   private final SelenideElement name = $(By.xpath("//div[@class='hp__hotel-title pp-header']//h2"));
     private final ElementsCollection stars = $$(By.xpath("//span[@data-testid='rating-stars']/span"));
     private final SelenideElement averageRating = $(By.xpath("//div[@data-testid='review-score-right-component']/div"));
     private final SelenideElement countOfReview = $(By.xpath("//div[@data-testid='review-score-right-component']/div[2]/div[2]"));
@@ -23,11 +21,12 @@ public class HotelPage {
     public HotelPage compareInfo(ArrayList<String> info, ArrayList<String> info2){
         switchTo().window(1);
         info.add(name.getText());
+        if (stars.isEmpty()){info.add(null);}
         info.add(String.valueOf(stars.size()));
         String rating = averageRating.getText();
         info.add(rating.substring(rating.length()-3));
-        info.add(countOfReview.getText());
-        info.add(cost.getText());
+        info.add(countOfReview.getText().replaceAll(" ", ""));
+        info.add(cost.getText().replaceAll(" ", ""));
         System.out.println(info);
         assert info.equals(info2);
         return this;

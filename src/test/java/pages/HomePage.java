@@ -8,8 +8,7 @@ import org.openqa.selenium.By;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class HomePage {
     private final SelenideElement cityField = $(By.name("ss"));
@@ -51,11 +50,7 @@ public class HomePage {
     }
 
     public HomePage hideMenu() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        sleep(1000);
         if(hideMenuButton.is(Condition.visible)){
             hideMenuButton.click();
         }

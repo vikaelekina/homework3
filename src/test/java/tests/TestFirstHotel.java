@@ -2,7 +2,10 @@ package tests;
 
 
 
-import org.junit.Test;
+
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.HotelPage;
 import pages.MapPage;
@@ -18,8 +21,8 @@ public class TestFirstHotel {
 
     private final String city = "Анталья";
 
-
-    @Test
+@Test
+@DisplayName("Проверка 1ого отеля")
     public void testFirstHotel() {
         ArrayList<String> infoMap = new ArrayList<String>();
         ArrayList<String> infoHotel = new ArrayList<String>();
